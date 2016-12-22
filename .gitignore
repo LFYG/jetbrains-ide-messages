@@ -1,0 +1,7 @@
+/.idea/
+/messages_en2/
+/messages_zh2/
+
+*.jar
+*.lnk
+temp.md
