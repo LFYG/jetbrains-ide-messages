@@ -1,6 +1,7 @@
 /.idea/
 /messages_en2/
 /messages_zh2/
+/resources_en/
 
 *.jar
 *.lnk
