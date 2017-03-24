@@ -99,7 +99,7 @@ class  Messages
         foreach ($properties as $basename => &$items) {
             foreach ($items as $key => &$prop) {
                 if (preg_match('/([\w\.\$\-]+)\s*=(.*)/s', $prop, $matches)) {
-                    $prop = [$matches[1], $matches[2]];
+                    $prop = [$matches[1], ltrim($matches[2])];
                 }
             }
 
@@ -155,6 +155,9 @@ $messages_zh = new Messages(MESSAGES_ZH_DIR);
 $enPropertiesAsArray = $messages_en->getPropertiesAsArray();
 $zhPropertiesAsIndex = $messages_zh->getPropertiesAsIndex();
 
+// $enPropertiesAsArray['ActionsBundle.properties'] = array_slice($enPropertiesAsArray['ActionsBundle.properties'], 0, 200);
+// print_r($enPropertiesAsArray['ActionsBundle.properties']);exit;
+// print_r($zhPropertiesAsIndex['ActionsBundle.properties']);exit;
 
 /**
  * 双语格式
