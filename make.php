@@ -1,5 +1,9 @@
 <?php
 error_reporting(E_ALL);
+function exception_error_handler($errno, $errstr, $errfile, $errline ) {
+    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+}
+set_error_handler("exception_error_handler");
 
 
 $files = glob('messages_zh/*.properties');
@@ -19,7 +23,14 @@ foreach ($files as $key => $item) {
     }
 
     $data = file_get_contents($item_zh);
-    $data = utf8_unicode($data);
+
+    try {
+        $data = utf8_unicode($data);
+    } catch (Exception $e) {
+        echo $item;
+        echo $e->getMessage();
+    }
+
     // $data = unicode_decode($data);
     file_put_contents($item_cn, $data);
 }
